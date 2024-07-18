@@ -33,7 +33,7 @@ router.post("/signup", async (req, res) => {
 
     await newUser.save();
     console.log("User signed up successfully:", email);
-    res.status(201).send("User signed up successfully");
+    res.redirect("/dashboard");
   } catch (error) {
     console.error("Error signing up:", error);
     res.status(500).send("Error signing up");

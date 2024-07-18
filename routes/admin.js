@@ -9,7 +9,6 @@ const adminMiddleware = async (req, res, next) => {
       return res.redirect("/auth/login");
     }
 
-    // Assuming the first user in the database is the admin
     const adminUser = await User.findOne({ email: "wasan.ansh@gmail.com" });
     if (!adminUser) {
       console.log("Admin user not found in the database.");

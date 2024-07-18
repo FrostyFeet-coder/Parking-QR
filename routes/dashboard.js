@@ -22,7 +22,6 @@ router.post("/generate-qr", authMiddleware, async (req, res) => {
   const userId = req.session.user._id;
 
   try {
-    // Find the logged-in user
     const user = await User.findById(userId);
     if (!user) {
       console.error("User not found for ID:", userId);
@@ -47,11 +46,11 @@ router.post("/generate-qr", authMiddleware, async (req, res) => {
     }
     await qrData.save();
 
-    // Generate QR code with a dynamic URL containing userId
-    const qrCodeURL = `https://parking-qr-1.onrender.com/user/${userId}`; // Update this URL if your domain or port changes
+    //for dynamic  link creation
+    const qrCodeURL = `https://parking-qr-1.onrender.com/user/${userId}`; 
     const qrCode = await QRCode.toDataURL(qrCodeURL);
 
-    // Update user's QR code field
+    // Update user QR code field
     user.qrCode = qrCode;
     await user.save();
 

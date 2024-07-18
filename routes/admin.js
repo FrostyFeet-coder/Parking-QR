@@ -2,7 +2,6 @@ const express = require("express");
 const User = require("../models/User");
 const router = express.Router();
 
-// Middleware to protect admin routes
 const adminMiddleware = async (req, res, next) => {
   try {
     if (!req.session.user) {

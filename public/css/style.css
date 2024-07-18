@@ -1,29 +1,35 @@
-/* General Styles */
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background-color: #f0f4f8;
   color: #333;
 }
 
 header {
-  background: #222;
+  background: #1e2a38;
   color: #fff;
   padding: 1.5rem 2rem;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
 }
 
 header nav a {
   color: #fff;
   text-decoration: none;
-  margin: 0 1rem;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
 header nav a:hover {
-  text-decoration: underline;
+  color: #f0a500;
 }
 
 main {
@@ -32,106 +38,133 @@ main {
   margin: auto;
 }
 
+/* Headings */
 h1, h2, h3 {
-  color: #333;
+  color: #1e2a38;
   margin-bottom: 1rem;
 }
 
 h1 {
-  font-size: 2rem;
-  border-bottom: 2px solid #333;
+  font-size: 2.5rem;
+  border-bottom: 4px solid #1e2a38;
   padding-bottom: 0.5rem;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin-top: 1.5rem;
+  color: #3c4c6b;
 }
 
-/* Form Styles */
+h3 {
+  font-size: 1.75rem;
+  margin-top: 1.25rem;
+  color: #5b6b7a;
+}
+
 form {
-  max-width: 500px;
+  max-width: 600px;
   margin: auto;
-  background: #fff;
+  background: #ffffff;
   padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border: 1px solid #dbe2e8;
 }
 
 form label {
   display: block;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #4a5568;
 }
 
 form input {
-  width: calc(100% - 1rem);
+  width: 100%;
   padding: 0.75rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  margin-bottom: 1.5rem;
+  border: 1px solid #dbe2e8;
+  border-radius: 8px;
   font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus {
+  border-color: #38b2ac;
+  box-shadow: 0 0 0 3px rgba(56, 178, 172, 0.3);
+  outline: none;
 }
 
 form button {
-  background: #333;
+  background: #1e2a38;
   color: #fff;
   border: none;
   padding: 0.75rem 1.5rem;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 form button:hover {
-  background: #555;
+  background: #2d3a5a;
+  transform: translateY(-2px);
 }
 
-/* Table Styles */
+form button:active {
+  background: #1e2a38;
+  transform: translateY(1px);
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
   margin: 2rem 0;
-  background: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  background: #ffffff;
+  border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 table th, table td {
-  border: 1px solid #ddd;
+  border: 1px solid #dbe2e8;
   padding: 1rem;
   text-align: left;
+  font-size: 1rem;
 }
 
 table th {
-  background: #f4f4f4;
-  font-weight: bold;
+  background: #f8f9fa;
+  color: #4a5568;
+  font-weight: 700;
 }
 
 table tr:nth-child(even) {
-  background: #f9f9f9;
+  background: #f1f5f9;
 }
 
 table tr:hover {
-  background: #f1f1f1;
+  background: #e2e8f0;
 }
 
-/* Button Styles */
 .button {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  background-color: #333;
+  background-color: #1e2a38;
   color: #fff;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 1rem;
   text-align: center;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .button:hover {
-  background-color: #555;
+  background-color: #2d3a5a;
+  transform: translateY(-2px);
+}
+
+.button:active {
+  background-color: #1e2a38;
+  transform: translateY(1px);
 }

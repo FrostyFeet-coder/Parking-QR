@@ -1,0 +1,41 @@
+<!-- admin.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Add your CSS links or stylesheets here -->
+</head>
+<body>
+    <h2>Admin Dashboard</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>QR Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(user => { %>
+                <tr>
+                    <td><%= user.name %></td>
+                    <td><%= user.email %></td>
+                    <td>
+                        <% if (user.qrCode) { %>
+                            <img src="<%= user.qrCode %>" alt="QR Code" style="width: 100px; height: 100px;">
+                        <% } else { %>
+                            No QR Code
+                        <% } %>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <!-- Add any other admin dashboard elements or functionality -->
+</body>
+</html>

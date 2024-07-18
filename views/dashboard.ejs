@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Dashboard</h1>
+    
+    <section>
+        <h2>QR Code Information</h2>
+        <% if (user.qrCode) { %>
+            <img src="<%= user.qrCode %>" alt="QR Code">
+        <% } else { %>
+            <p>No QR code available.</p>
+        <% } %>
+    </section>
+
+    <section>
+        <h2>Update Information</h2>
+        <form action="/dashboard/generate-qr" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" required><br>
+
+            <label for="carname">Car Name:</label>
+            <input type="text" id="carname" name="carname" required><br>
+
+            <label for="numberplate">Car Number Plate:</label>
+            <input type="text" id="numberplate" name="numberplate" required><br>
+
+            <button type="submit">Generate QR Code</button>
+        </form>
+    </section>
+</body>
+</html>

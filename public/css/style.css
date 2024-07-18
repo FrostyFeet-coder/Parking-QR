@@ -36,9 +36,37 @@ main {
   padding: 2rem;
   max-width: 1200px;
   margin: auto;
+  text-align: center; 
 }
 
-/* Headings */
+.qr-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.qr-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.qr-info {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: #1e2a38;
+}
+
+.qr-info h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #1e2a38;
+}
+
 h1, h2, h3 {
   color: #1e2a38;
   margin-bottom: 1rem;

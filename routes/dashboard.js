@@ -48,7 +48,7 @@ router.post("/generate-qr", authMiddleware, async (req, res) => {
     await qrData.save();
 
     // Generate QR code with a dynamic URL containing userId
-    const qrCodeURL = `http://localhost:5000/user/${userId}`; // Update this URL if your domain or port changes
+    const qrCodeURL = `https://parking-qr-1.onrender.com/user/${userId}`; // Update this URL if your domain or port changes
     const qrCode = await QRCode.toDataURL(qrCodeURL);
 
     // Update user's QR code field

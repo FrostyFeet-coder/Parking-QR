@@ -4,36 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        section {
+            margin: 2rem 0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+        }
+        button {
+            margin-top: 1rem;
+        }
+    </style>
 </head>
 <body>
-    <h1>Dashboard</h1>
-    
-    <section>
-        <h2>QR Code Information</h2>
-        <% if (user.qrCode) { %>
-            <img src="<%= user.qrCode %>" alt="QR Code">
-        <% } else { %>
-            <p>No QR code available.</p>
-        <% } %>
-    </section>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Dashboard</h1>
+        
+        <section>
+            <h2>QR Code Information</h2>
+            <% if (user.qrCode) { %>
+                <div class="text-center">
+                    <img id="qrCodeImage" src="<%= user.qrCode %>" alt="QR Code">
+                    <button id="printQrButton" class="btn btn-primary mt-2">Print QR</button>
+                </div>
+            <% } else { %>
+                <p>No QR code available.</p>
+            <% } %>
+        </section>
 
-    <section>
-        <h2>Update Information</h2>
-        <form action="/dashboard/generate-qr" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required><br>
+        <section>
+            <h2>Update Information</h2>
+            <form action="/dashboard/generate-qr" method="POST">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone:</label>
+                    <input type="text" id="phone" name="phone" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="carname">Car Name:</label>
+                    <input type="text" id="carname" name="carname" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="numberplate">Car Number Plate:</label>
+                    <input type="text" id="numberplate" name="numberplate" class="form-control" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Generate QR Code</button>
+            </form>
+        </section>
+    </div>
 
-            <label for="phone">Phone:</label>
-            <input type="text" id="phone" name="phone" required><br>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const qrImage = document.getElementById('qrCodeImage');
+            const printButton = document.getElementById('printQrButton');
 
-            <label for="carname">Car Name:</label>
-            <input type="text" id="carname" name="carname" required><br>
+            printButton.addEventListener('click', function() {
+                if (qrImage && qrImage.src) {
+                    const link = document.createElement('a');
+                    link.href = qrImage.src;
+                    link.download = 'QRCode.png';
+                    link.click();
+                } else {
+                    console.error('QR code image not found.');
+                }
+            });
+        });
+    </script>
 
-            <label for="numberplate">Car Number Plate:</label>
-            <input type="text" id="numberplate" name="numberplate" required><br>
-
-            <button type="submit">Generate QR Code</button>
-        </form>
-    </section>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

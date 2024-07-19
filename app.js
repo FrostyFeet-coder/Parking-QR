@@ -54,6 +54,7 @@ app.use((req, res, next) => {
 app.use(ejsLayouts);
 app.set("view engine", "ejs");
 app.set("layout", "layout"); // Set the default layout
+app.set("views", path.join(__dirname, "views"));
 
 // Routes
 app.use("/", indexRoutes);

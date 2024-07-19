@@ -2,6 +2,8 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 const router = express.Router();
+const crypto = require("crypto");
+const createTransporter = require('../config/nodemailer'); // Ensure this path is correct
 
 // Render signup page
 router.get("/signup", (req, res) => {
@@ -86,6 +88,86 @@ router.get("/logout", (req, res) => {
     console.log("User logged out successfully");
     res.redirect("/");
   });
+});
+router.get("/forgot-password", (req, res) => {
+  res.render("forgot-password");
+});
+
+router.post("/forgot-password", async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    console.log("Processing forgot password request for:", email);
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      console.error("User not found for email:", email);
+      return res.status(404).send("User with that email does not exist.");
+    }
+
+    const token = crypto.randomBytes(20).toString("hex");
+    user.resetPasswordToken = token;
+    user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+
+    await user.save();
+
+    let transporter;
+    try {
+      transporter = createTransporter(email, password);
+      console.log("Transporter created successfully");
+    } catch (error) {
+      console.error("Error creating transporter:", error);
+      return res.status(500).send("Failed to create transporter.");
+    }
+
+    const resetUrl = `http://localhost:3000/auth/reset-password/${token}`;
+    await transporter.sendMail({
+      to: email,
+      from: email,
+      subject: "Password Reset",
+      html: `<p>You requested a password reset</p>
+             <p>Click <a href="${resetUrl}">here</a> to reset your password</p>`,
+    });
+
+    console.log("Password reset email sent to:", email);
+    res.status(200).send("Password reset email sent.");
+  } catch (error) {
+    console.error("Error processing forgot password request:", error);
+    res.status(500).send("Error processing request.");
+  }
+});
+
+router.post("/reset-password/:token", async (req, res) => {
+  const { token } = req.params;
+  const { newPassword } = req.body;
+
+  try {
+    console.log("Processing reset password request for token:", token);
+
+    const user = await User.findOne({
+      resetPasswordToken: token,
+      resetPasswordExpires: { $gt: Date.now() },
+    });
+
+    if (!user) {
+      console.error("Invalid or expired reset token:", token);
+      return res
+        .status(400)
+        .send("Password reset token is invalid or has expired.");
+    }
+
+    user.password = newPassword;
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpires = undefined;
+
+    await user.save();
+
+    console.log("Password successfully reset for user:", user.email);
+    res.status(200).send("Password has been reset.");
+  } catch (error) {
+    console.error("Error processing reset password request:", error);
+    res.status(500).send("Error processing request.");
+  }
 });
 
 module.exports = router;

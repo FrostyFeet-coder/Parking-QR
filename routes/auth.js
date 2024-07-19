@@ -5,7 +5,6 @@ const router = express.Router();
 const crypto = require("crypto");
 const createTransporter = require('../config/nodemailer'); // Ensure this path is correct
 
-// Render signup page
 router.get("/signup", (req, res) => {
   res.render("signup");
 });
@@ -35,14 +34,13 @@ router.post("/signup", async (req, res) => {
 
     await newUser.save();
     console.log("User signed up successfully:", email);
-    res.status(201).send("User signed up successfully");
+    res.redirect("/dashboard");
   } catch (error) {
     console.error("Error signing up:", error);
     res.status(500).send("Error signing up");
   }
 });
 
-// Render login page
 router.get("/login", (req, res) => {
   res.render("login");
 });
@@ -61,7 +59,7 @@ router.post("/login", async (req, res) => {
 
     console.log("User found:", email);
 
-    // Check if the password matches
+    
     const isMatch = await bcrypt.compare(password, user.password);
     if (!user.password) {
       console.log("Password does not match for user:", email);

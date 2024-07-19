@@ -8,7 +8,7 @@ body {
 }
 
 header {
-  background: #007bff;
+  background: #333;
   color: #fff;
   padding: 1.5rem 2rem;
   text-align: center;
@@ -35,64 +35,10 @@ header nav a:hover {
 
 main {
   padding: 2rem;
-  max-width: 1200px;
-  margin: auto;
-  text-align: center; /* Center-align text and block elements */
 }
 
-/* QR Code Container */
-.qr-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 600px;
-  margin: 2rem auto;
-}
-
-/* QR Code Image */
-.qr-image img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* QR Code Information */
-.qr-info {
-  margin-top: 1rem;
-  font-size: 1.1rem;
-  color: #007bff;
-}
-
-.qr-info h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: #007bff;
-}
-
-/* Headings */
 h1, h2, h3 {
-  color: #007bff;
-  margin-bottom: 1rem;
-}
-
-h1 {
-  font-size: 2.5rem;
-  border-bottom: 4px solid #007bff;
-  padding-bottom: 0.5rem;
-}
-
-h2 {
-  font-size: 2rem;
-  margin-top: 1.5rem;
-  color: #3c4c6b;
-}
-
-h3 {
-  font-size: 1.75rem;
-  margin-top: 1.25rem;
-  color: #5b6b7a;
+  color: #333;
 }
 
 /* Form Styles */
@@ -108,9 +54,8 @@ form {
 
 form label {
   display: block;
-  margin-bottom: 0.75rem;
-  font-weight: 600;
-  color: #4a5568;
+  margin-bottom: 0.5rem;
+  color: #333;
 }
 
 form input {
@@ -130,7 +75,7 @@ form input:focus {
 }
 
 form button {
-  background: #007bff;
+  background: #333;
   color: #fff;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -141,13 +86,7 @@ form button {
 }
 
 form button:hover {
-  background: #2d3a5a;
-  transform: translateY(-2px);
-}
-
-form button:active {
-  background: #007bff;
-  transform: translateY(1px);
+  background: #555;
 }
 
 /* Table Styles */
@@ -165,42 +104,4 @@ table th, table td {
   border: 1px solid #dbe2e8;
   padding: 1rem;
   text-align: left;
-  font-size: 1rem;
-}
-
-table th {
-  background: #f8f9fa;
-  color: #4a5568;
-  font-weight: 700;
-}
-
-table tr:nth-child(even) {
-  background: #f1f5f9;
-}
-
-table tr:hover {
-  background: #e2e8f0;
-}
-
-/* Button Styles */
-.button {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background-color: #007bff;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  text-align: center;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.button:hover {
-  background-color: #2d3a5a;
-  transform: translateY(-2px);
-}
-
-.button:active {
-  background-color: #007bff;
-  transform: translateY(1px);
 }

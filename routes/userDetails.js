@@ -7,7 +7,7 @@ router.get("/:userId", async (req, res) => {
   try {
     const userId = req.params.userId;
 
-    // Fetch QR data for the specified user
+    //  QR data for the specified user
     const qrData = await QRData.findOne({ userId });
 
     if (!qrData) {

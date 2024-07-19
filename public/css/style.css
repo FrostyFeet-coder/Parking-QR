@@ -4,11 +4,11 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f0f4f8;
-  color: #333;
+  color:#007bff;
 }
 
 header {
-  background: #333;
+  background:#007bff;
   color: #fff;
   padding: 1.5rem 2rem;
   text-align: center;
@@ -38,7 +38,7 @@ main {
 }
 
 h1, h2, h3 {
-  color: #333;
+  color:#007bff;
 }
 
 /* Form Styles */
@@ -55,7 +55,7 @@ form {
 form label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #333;
+  color:#007bff;
 }
 
 form input {
@@ -75,7 +75,7 @@ form input:focus {
 }
 
 form button {
-  background: #333;
+  background:#007bff;
   color: #fff;
   border: none;
   padding: 0.75rem 1.5rem;

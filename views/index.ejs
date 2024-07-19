@@ -1,2 +1,31 @@
-<h1>Welcome to Parking QR</h1>
-<p>Generate QR codes for your car information and solve parking problems easily.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  
+
+  <main>
+    <h1>Welcome to Parking QR</h1>
+    <p>Your ultimate solution for parking management.</p>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+      <h2>Client Testimonials</h2>
+      <div class="testimonials-container">
+        <% testimonials.forEach(testimonial => { %>
+          <div class="testimonial">
+            <p>"<%= testimonial.review %>"</p>
+            <p>- <%= testimonial.client %></p>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

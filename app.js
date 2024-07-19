@@ -10,6 +10,7 @@ const indexRoutes = require("./routes/index");
 const adminRoutes = require("./routes/admin");
 const dashboardRoutes = require("./routes/dashboard");
 const userDetailsRouter = require("./routes/userDetails");
+const Testimonial = require('./models/Testimonial');
 
 const app = express();
 
@@ -63,8 +64,54 @@ app.use("/admin", adminRoutes);
 app.use("/user", userDetailsRouter);
 app.use("/dashboard", dashboardRoutes);
 
+const testimonials = [
+  {
+    client: "Avishi",
+    review: "Exceptional service and attention to detail. Truly impressed!",
+  },
+  {
+    client: "Parina",
+    review:
+      "Wonderful experience with top-notch support. Highly recommend to others.",
+  },
+];
+
+// Define the function to add testimonials
+async function addTestimonials() {
+  try {
+    for (const testimonial of testimonials) {
+      const exists = await Testimonial.findOne({
+        client: testimonial.client,
+        review: testimonial.review,
+      });
+
+      if (!exists) {
+        await Testimonial.create(testimonial);
+        console.log(`Added testimonial from ${testimonial.client}`);
+      } else {
+        console.log(`Testimonial from ${testimonial.client} already exists`);
+      }
+    }
+  } catch (err) {
+    console.error("Error adding testimonials:", err);
+  }
+}
+
+// addTestimonials();
 // Start Server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+});
+
+mongoose.connection.on("connected", () => {
+  console.log("Mongoose connected to " + process.env.MONGO_URI);
+});
+
+mongoose.connection.on("error", (err) => {
+  console.error("Mongoose connection error:", err);
+});
+
+mongoose.connection.on("disconnected", () => {
+  console.log("Mongoose disconnected");
 });

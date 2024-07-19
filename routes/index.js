@@ -2,6 +2,8 @@ const express = require("express");
 const QRCode = require("qrcode");
 const User = require("../models/User");
 const router = express.Router();
+const Testimonial = require("../models/Testimonial");
+const mongoose = require("mongoose");
 
 // Middleware to protect routes
 const authMiddleware = (req, res, next) => {
@@ -9,10 +11,22 @@ const authMiddleware = (req, res, next) => {
   next();
 };
 
-// Home
-router.get("/", (req, res) => {
-  res.render("index");
+// Home page
+router.get("/", async (req, res) => {
+  try {
+    if (mongoose.connection.readyState !== 1) {
+      // If not connected, return an error
+      throw new Error("Database not connected");
+    }
+
+    const testimonials = await Testimonial.find();
+    res.render("index", { testimonials });
+  } catch (error) {
+    console.error("Error fetching testimonials:", error);
+    res.status(500).send("Error fetching testimonials");
+  }
 });
+
 
 // Dashboard
 router.get("/dashboard", authMiddleware, async (req, res) => {
@@ -50,5 +64,8 @@ router.post("/generate-qr", authMiddleware, async (req, res) => {
     res.status(500).send("Error generating or saving QR code");
   }
 });
+
+
+
 
 module.exports = router;

@@ -105,3 +105,102 @@ table th, table td {
   padding: 1rem;
   text-align: left;
 }
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f4f8;
+  color: #333;
+}
+
+
+
+header nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+header nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+header nav a:hover {
+  color: #f0a500;
+}
+
+main {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+h1, h2, h3 {
+  color: #1e2a38;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  border-bottom: 4px solid #1e2a38;
+  padding-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-top: 1.5rem;
+  color: #3c4c6b;
+}
+
+h3 {
+  font-size: 1.75rem;
+  margin-top: 1.25rem;
+  color: #5b6b7a;
+}
+
+/* Testimonials Styles */
+#testimonials {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.testimonials-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.testimonial {
+  flex: 1 1 300px;
+  padding: 1rem;
+  border: 1px solid #dbe2e8;
+  border-radius: 8px;
+  background: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.testimonial p:last-child {
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: #555;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #1e2a38;
+  color: #fff;
+}

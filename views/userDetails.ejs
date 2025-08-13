@@ -11,9 +11,27 @@
     <section>
         <h2>User Information</h2>
         <p><strong>Name:</strong> <%= qrData.name %></p>
-        <p><strong>Phone:</strong> <%= qrData.phone %></p>
+        <p>
+            <strong>Phone:</strong>
+            <span id="phone"><%= qrData.phone %></span>
+        </p>
         <p><strong>Car Number Plate:</strong> <%= qrData.numberplate %></p>
         <p><strong>Car Name:</strong> <%= qrData.carname %></p>
     </section>
+
+    <script>
+        // Simple phone validation (10-15 digits, can be adjusted)
+        function isValidPhone(phone) {
+            return /^\d{10,15}$/.test(phone);
+        }
+
+        const phoneElem = document.getElementById('phone');
+        const phoneValue = phoneElem.textContent.trim();
+
+        if (!isValidPhone(phoneValue)) {
+            phoneElem.textContent = 'Invalid phone number';
+            phoneElem.style.color = 'red';
+        }
+    </script>
 </body>
 </html>
